@@ -1,4 +1,6 @@
+beautifulsoup4==4.12.2
 ipykernel==6.25.2
+lxml==4.9.3
 mplsoccer==1.2.2
 numba==0.58.1
 pip-chill==1.0.3
