@@ -30,3 +30,8 @@ Looking at the [competitions which are indexed by statsbomb open data](https://g
     - Season 2015/16
 - Ligue 1
     - Season 2015/16
+
+Statsbomb only indexes a very small subset of the La Liga.
+
+# TODO
+Do descriptive analysis on the two datasets 
