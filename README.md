@@ -63,3 +63,22 @@ Here are some more metrics of the above plotted distributions:
 - Understat variance xG: 0.024090796686108872
 - Statsbomb standard deviation xG: 0.14046341407228105
 - Understat standard deviation xG: 0.15521210225400878
+
+# Tasks
+Contact understat on their data source (event data?) (+)
+Look into which matches have the biggest difference of shots
+Distribution of shots per match
+Two providers for the same pipeline (that it is applicable to any data provider)
+Scale the pipeline out (+-, simlation missing)
+Linear regression on runtimes
+Heating up cache?
+Write about numerical instability
+Distribution of shots per match
+look at danny.page, how many times they simulate for a representative sample
+Plot execution times from algorithms, given the distribution from the matches
+# Next meeting
+Implement algorithm
+- DP
+- FFT
+- Simulation
+Time them, think of comparison
