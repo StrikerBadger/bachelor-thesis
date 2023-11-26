@@ -12,7 +12,7 @@ class PoiBinCalculator():
         
     # DP algorithm (non-optimized)
     def dp_poibin_pdf(self):
-        start = time.time()
+        execution_time = time.process_time()
         # Initialize the dp table
         p_k = [1] + [0]*self.n
         # Iterate over the dp table
@@ -21,21 +21,45 @@ class PoiBinCalculator():
                 inc = self.p_is[i-1]*p_k[c-1]
                 p_k[c-1] -= inc
                 p_k[c] += inc
-        print(f"DP-based Poisson Binomial PDF takes {time.time() - start} seconds")
-        return p_k 
+        execution_time = time.process_time() - execution_time
+        return p_k, execution_time
         
     # FFT-based Poisson Binomial PDF
     def fft_poibin_pdf(self):
         res = None
         fft_calculator = PoiBin(self.p_is)
-        start = time.time()
+        execution_time = time.process_time()
         res = fft_calculator.get_pmf_xi()
-        print(f"FFT-based Poisson Binomial PDF takes {time.time() - start} seconds")
-        return 
+        execution_time = time.process_time() - execution_time
+        return res, execution_time
+    
+    # Simulation approach
+    def sim_poibin_pdf(self, n_sim=10000):
+        res = None
+        execution_time = time.process_time()
+        res = np.zeros(self.n+1)
+        for _ in range(n_sim):
+            res[np.sum(np.random.uniform(size=self.n) <= self.p_is)] += 1
+        res /= n_sim
+        execution_time = time.process_time() - execution_time
+        return res, execution_time
     
 if __name__ == '__main__':
     # Test the algorithm
-    p_is = [random.random() for i in range(25)]
+    p_is = [random.random() for _ in range(5)]
     poibinc = PoiBinCalculator(p_is)
-    poibinc.dp_poibin_pdf()
-    poibinc.fft_poibin_pdf()
+    res_dp, exectime_dp = poibinc.dp_poibin_pdf()
+    res_fft, exectime_fft = poibinc.fft_poibin_pdf()
+    res_sim, exectime_sim = poibinc.sim_poibin_pdf()
+    print('Results:')
+    print('DP: ', res_dp)
+    print('FFT: ', res_fft)
+    print('SIM: ', res_sim)
+    print('Execution times (s):')
+    print('DP: ', exectime_dp)
+    print('FFT: ', exectime_fft)
+    print('SIM: ', exectime_sim)
+    print('Sum of the probabilities:')
+    print('DP: ', np.sum(res_dp))
+    print('FFT: ', np.sum(res_fft))
+    print('SIM: ', np.sum(res_sim))
