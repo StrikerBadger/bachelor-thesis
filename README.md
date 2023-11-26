@@ -62,7 +62,11 @@ Here are some more metrics of the above plotted distributions:
 - Statsbomb variance xG: 0.019729970692841086
 - Understat variance xG: 0.024090796686108872
 - Statsbomb standard deviation xG: 0.14046341407228105
-- Understat standard deviation xG: 0.15521210225400878
+- Understat standard deviation xG: 0.
+
+## Algorithms
+### Calculating the Distribution
+
 
 # Tasks
 Contact understat on their data source (event data?) (+)
