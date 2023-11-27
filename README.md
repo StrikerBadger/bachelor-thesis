@@ -62,24 +62,41 @@ Here are some more metrics of the above plotted distributions:
 - Statsbomb variance xG: 0.019729970692841086
 - Understat variance xG: 0.024090796686108872
 - Statsbomb standard deviation xG: 0.14046341407228105
-- Understat standard deviation xG: 0.
+- Understat standard deviation xG: 0.15521210225400878
 
 ## Algorithms
 ### Calculating the Distribution
+**Dynamic Programming**
+
+The DP (Dynamic Programming) algorithm's execution times show a general increasing trend with the number of shots. This suggests a correlation between the complexity of the input (in terms of shots) and the time taken to process it. We can also see, that there is not alot of variance between the measurements. Reason for that is that there really isn't a 'worst-case' for dynamic programming.
+
+![DP Algorithm Execution Times](graphs/2_execution_times_dp.png)
+
+**FFT Algorithm**
+
+The FFT (Fast Fourier Transform) algorithm scatter plot indicates a group of outliers where the execution time is significantly higher than the average. This could point to occasional performance degradations possibly due to algorithmic inefficiencies. The variance between the execution times is high and when summing the probabilities there is some error displayed.
+
+![FFT Algorithm Execution Times](graphs/2_execution_times_fft.png)
+
+### Simulation
+Looking at the sources of the [website](https://danny.page/expected_goals) made by Danny Page, which simulates matches to get the frequentistic probability of the goal distribution, the source for the function generating the samples, samples the match 10000 (ten-thousand) times. Taking this number to generate a represantitive sample of the distribution the running times of the simulation are plotted. Of course, to make out if 10000 samples is enough, there is further analysis needed.
+
+![Simulation Algorithm Execution Times](graphs/2_execution_times_simulation.png)
+
+For the simulation algorithm, the execution times are quite varied but do not show a clear trend with the number of shots. The spread of execution times suggests that the algorithm's performance may be influenced by factors other than just the input size. Namely it is heavily dependant on the number of simulations of the match to be run.
 
 
 # Tasks
 Contact understat on their data source (event data?) (+)
 Look into which matches have the biggest difference of shots
-Distribution of shots per match
-Two providers for the same pipeline (that it is applicable to any data provider)
-Scale the pipeline out (+-, simlation missing)
+Distribution of shots per match (+)
+Two providers for the same pipeline (that it is applicable to any data provider) (+)
+Scale the pipeline out (+)
 Linear regression on runtimes
-Heating up cache?
-Write about numerical instability
-Distribution of shots per match
-look at danny.page, how many times they simulate for a representative sample
-Plot execution times from algorithms, given the distribution from the matches
+Heating up cache? (-)
+Write about numerical instability (+-)
+look at danny.page, how many times they simulate for a representative sample (+)
+Plot execution times from algorithms, given the distribution from the matches (+)
 # Next meeting
 Implement algorithm
 - DP
