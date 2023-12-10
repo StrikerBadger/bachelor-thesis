@@ -41,12 +41,11 @@ class PoiBinCalculator():
         
     # FFT-based Poisson Binomial PDF
     def fft_poibin_pdf(self):
-        res = None
-        fft_calculator = PoiBin(self.p_is)
         execution_time = time.process_time()
-        res = fft_calculator.get_pmf_xi()
+        res = PoiBin(self.p_is).get_pmf_xi()
         execution_time = time.process_time() - execution_time
         return res, 1000*execution_time
+        
     
     # Simulation approach
     def sim_poibin_pdf(self, n_sim=10000):
@@ -66,19 +65,19 @@ if __name__ == '__main__':
     res_dp, exectime_dp = poibinc.dp_poibin_pdf()
     res_fft, exectime_fft = poibinc.fft_poibin_pdf()
     res_sim, exectime_sim = poibinc.sim_poibin_pdf()
-    res_odp, exectime_odp = poibinc.optimized_dp_poibin_pdf()
+    # res_odp, exectime_odp = poibinc.optimized_dp_poibin_pdf()
     print('Results:')
     print('DP: ', res_dp)
-    print('ODP: ', res_odp)
+    # print('ODP: ', res_odp)
     print('FFT: ', res_fft)
     print('SIM: ', res_sim)
     print('Execution times (ms):')
     print('DP: ', exectime_dp)
-    print('ODP: ', exectime_odp)
+    # print('ODP: ', exectime_odp)
     print('FFT: ', exectime_fft)
     print('SIM: ', exectime_sim)
     print('Sum of the probabilities:')
     print('DP: ', np.sum(res_dp))
-    print('ODP: ', np.sum(res_odp))
+    # print('ODP: ', np.sum(res_odp))
     print('FFT: ', np.sum(res_fft))
     print('SIM: ', np.sum(res_sim))

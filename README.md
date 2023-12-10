@@ -98,8 +98,12 @@ Write about numerical instability (+-)
 look at danny.page, how many times they simulate for a representative sample (+)
 Plot execution times from algorithms, given the distribution from the matches (+)
 # Next meeting
-Implement algorithm
-- DP
-- FFT
-- Simulation
-Time them, think of comparison
+bernmix issue
+look into parallelizing the dp approach (multiprocessing)
+fix the seed -> reproducability
+different cells for different algorithms
+Python for the algortihms and plotting execution time
+streamlit.io dashboard
+
+# Important links
+- Used python package: https://github.com/tsakim/poibin
