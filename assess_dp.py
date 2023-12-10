@@ -4,13 +4,22 @@ from matplotlib import pyplot as plt
 import time
 import statistics
 
-def assess_fft(p_is, repeat=50):
+def assess_fft(p_is, repeat=100):
     p_is = [float(p_i) for p_i in p_is[1:-1].split(', ')]
     execution_times = []
     results = []
     for _ in range(repeat):
         execution_time = time.process_time_ns()
-        res = PoiBin(p_is).get_pmf_xi()
+        # Initialize the dp table
+        n = len(p_is)
+        p_k = [1] + [0]*n
+        # Iterate over the dp table
+        for i in range(n+1):
+            for c in range(i, 0, -1):
+                inc = p_is[i-1]*p_k[c-1]
+                p_k[c-1] -= inc
+                p_k[c] += inc
+        res = p_k
         execution_time = time.process_time_ns() - execution_time
         execution_times.append(execution_time)
         results.append(list(res))
@@ -21,11 +30,11 @@ def plot_execution_times(df):
     shot_amnts = df['shot_amnt'].unique()
     execution_times = df.groupby('shot_amnt')['execution_time_ns'].mean()
     plt.scatter(shot_amnts, execution_times)
-    plt.ylim(0, 500000)
-    plt.title('Mean Execution Times for the FFT Algorithm')
+    plt.ylim(0, 1000000)
+    plt.title('Mean Execution Times for the DP Algorithm')
     plt.xlabel('Number of Shots')
     plt.ylabel('Mean Execution Time (ns)')
-    plt.savefig('graphs/fft_execution_times.png')
+    plt.savefig('graphs/dp_execution_times.png')
     
 if __name__ == '__main__':
     df = pd.read_csv('dataset/intersection/statsbomb_matches_shots/shots_per_match.csv')
