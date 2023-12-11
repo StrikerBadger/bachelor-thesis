@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 import time
 import statistics
 
-def assess_fft(p_is, repeat=50):
+def assess_fft(p_is, repeat=100):
     p_is = [float(p_i) for p_i in p_is[1:-1].split(', ')]
     execution_times = []
     results = []
@@ -33,4 +33,5 @@ if __name__ == '__main__':
     pmfs, execution_times = res.apply(lambda x: x[0]), res.apply(lambda x: x[1])
     df.loc[:, 'poi_bin_pmf'] = pmfs
     df.loc[:, 'execution_time_ns'] = execution_times
+    df.to_csv('execution_times_fft.csv', index=False)
     plot_execution_times(df)

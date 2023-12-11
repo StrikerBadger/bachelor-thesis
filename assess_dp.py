@@ -30,7 +30,7 @@ def plot_execution_times(df):
     shot_amnts = df['shot_amnt'].unique()
     execution_times = df.groupby('shot_amnt')['execution_time_ns'].mean()
     plt.scatter(shot_amnts, execution_times)
-    plt.ylim(0, 1000000)
+    plt.ylim(0, 500000)
     plt.title('Mean Execution Times for the DP Algorithm')
     plt.xlabel('Number of Shots')
     plt.ylabel('Mean Execution Time (ns)')
@@ -42,4 +42,5 @@ if __name__ == '__main__':
     pmfs, execution_times = res.apply(lambda x: x[0]), res.apply(lambda x: x[1])
     df.loc[:, 'poi_bin_pmf'] = pmfs
     df.loc[:, 'execution_time_ns'] = execution_times
+    df.to_csv('execution_times_dp.csv', index=False)
     plot_execution_times(df)
