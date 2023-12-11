@@ -9,7 +9,7 @@ def assess_fft(p_is, repeat=100):
     execution_times = []
     results = []
     for _ in range(repeat):
-        execution_time = time.process_time_ns()
+        execution_time = time.perf_counter_ns()
         # Initialize the dp table
         n = len(p_is)
         p_k = [1] + [0]*n
@@ -20,7 +20,7 @@ def assess_fft(p_is, repeat=100):
                 p_k[c-1] -= inc
                 p_k[c] += inc
         res = p_k
-        execution_time = time.process_time_ns() - execution_time
+        execution_time = time.perf_counter_ns() - execution_time
         execution_times.append(execution_time)
         results.append(list(res))
     assert all([res == results[0] for res in results]), 'Results are not consistent'
