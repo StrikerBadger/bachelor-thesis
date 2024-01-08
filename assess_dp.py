@@ -37,7 +37,7 @@ def plot_execution_times(df):
     plt.savefig('graphs/dp_execution_times.png')
     
 if __name__ == '__main__':
-    df = pd.read_csv('dataset/intersection/statsbomb_matches_shots/shots_per_match.csv')
+    df = pd.read_pickle('dataset/intersection/statsbomb_matches_shots/shots_per_match.pkl')
     res = df['shot_xgs'].apply(assess_fft)
     pmfs, execution_times = res.apply(lambda x: x[0]), res.apply(lambda x: x[1])
     df.loc[:, 'poi_bin_pmf'] = pmfs

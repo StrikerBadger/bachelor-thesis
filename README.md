@@ -99,7 +99,6 @@ look at danny.page, how many times they simulate for a representative sample (+)
 Plot execution times from algorithms, given the distribution from the matches (+)
 # Next meeting
 bernmix issue, delayed
-look into parallelizing the dp approach (multiprocessing)
 fix the seed -> reproducability
 different cells for different algorithms
 Python for the algortihms and plotting execution time
@@ -107,3 +106,35 @@ streamlit.io dashboard
 
 # Important links
 - Used python package: https://github.com/tsakim/poibin
+
+aggregate running time 1s
+look into ways to compare simulation with exact algorithms (assess the precision (distribution of the simulation))
+determine N to achieve good level of accuracy (r.o.t max.dist 1/2 min of probabilities)
+sampling xg distribution to observe difference in computation times.
+NaN xg value non-existent in statsbomb
+precision of the algorithms
+comparison between shot sequences > sort decreasing/increasing/(|p - 1/2|) > look on outcome of numerical stability
+writing > 1. descriptives of the data  > 2. bibliography > 3. description of the algorithms > 4. Design of experiment (sequence of things that are tested and how they are reported) 
+
+experiment: design > data > presentation > discussion
+
+pseudocode in the main text > appendix holds main code source (python)
+
+report attempts at making the dp algorithm faster (at the end of the comparative assessment)
+
+((does this still hold in the c interface))
+
+descriptive statistics:
+distribution of xG values
+how many shots per team
+interaction effect
+sum of the teams more consistent than shots per team
+
+difference of original xG distribution and rounded xG distribution (understat)
+
+more than 4 digits of precision in outcome probability * points
+
+not fixing the seed when sampling > ensure frequentistic consistent results > fix seed at the end (reproducability)
+
+(+) add supervisors to the overleaf document
+
