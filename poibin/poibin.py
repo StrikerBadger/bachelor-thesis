@@ -80,10 +80,10 @@ class PoiBin(object):
         """
         self.success_probabilities = np.array(probabilities)
         self.number_trials = self.success_probabilities.size
-        # self.check_input_prob()
+        self.check_input_prob()
         self.omega = 2 * np.pi / (self.number_trials + 1)
         self.pmf_list = self.get_pmf_xi()
-        self.cdf_list = [] # self.get_cdf(self.pmf_list)
+        self.cdf_list = self.get_cdf(self.pmf_list)
 
 # ------------------------------------------------------------------------------
 # Methods for the Poisson Binomial Distribution
