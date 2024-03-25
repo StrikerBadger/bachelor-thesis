@@ -8,3 +8,7 @@ If I have provided you with the dataset:
 2. Simulation Analysis
 3. Performance Analysis
 4. Numerical Analysis
+
+requirements.txt includes the used libraries in the code. They can be installed by running
+`pip install -r requirements.txt`
+in the root directory of this repository.
