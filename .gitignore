@@ -162,5 +162,4 @@ cython_debug/
 # Dataset
 dataset
 statsbomb_data
-name_to_id_mapping.csv
 possession_xGs.pkl
